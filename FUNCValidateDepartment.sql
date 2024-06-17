@@ -7,10 +7,13 @@ BEGIN
     DECLARE @isValid BIT;
     SET @isValid = 1; 
 
-    IF @name_department = '%[^A-Za-z ]%'
+    IF @name_department LIKE '%[^A-Za-z ]%'
     BEGIN
         SET @isValid = 0;
     END
-
+    ELSE
+    BEGIN
+        SET @isValid = 1;
+	END
     RETURN @isValid;
 END;
